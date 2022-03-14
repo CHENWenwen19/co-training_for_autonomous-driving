@@ -299,8 +299,12 @@ class DefaultTrainer(TrainerBase):
         self._trainer = (AMPTrainer if cfg.SOLVER.AMP.ENABLED else SimpleTrainer)(
             model, data_loader, optimizer
         )
-
-        self.scheduler = self.build_lr_scheduler(cfg, optimizer)
+        
+        '''========================================================'''
+        #change scheduler
+        #self.scheduler = self.build_lr_scheduler(cfg, optimizer)
+        self.scheduler = torch.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer,T_0=15000,T_mult=2)
+        '''========================================================'''
         # Assume no other objects need to be checkpointed.
         # We can later make it checkpoint the stateful hooks
         self.checkpointer = DetectionCheckpointer(
