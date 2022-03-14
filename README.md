@@ -24,5 +24,19 @@ sudo cp -r ./detectron2 /usr/local/lib/python3.7/dist-packages/detectron2
 ```
 ```
 python train_net.py --config-file configs/pascal_voc_R_50_C4_24k_moco.yaml \
- --num-gpus 8 MODEL.WEIGHTS ./output.pkl
+ --num-gpus 2 MODEL.WEIGHTS ./output.pkl
+```
+Combine the prediction results of MOCOv1 and MOCOv2:
+```
+python combine.txt
+```
+Generate labels in xml format:
+```
+python txt2xml.py
+```
+## Semi-supervised Retraining
+Use labeled KITTI and pseudo-labeled NuScene dataset to implement semi-supervised retraining, use the original detectron2:
+```
+python train_net.py --config-file configs/pascal_voc_R_50_C4_24k_moco.yaml \
+ --num-gpus 2 MODEL.WEIGHTS ./output.pkl
 ```
