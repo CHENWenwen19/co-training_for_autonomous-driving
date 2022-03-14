@@ -18,3 +18,11 @@ Use KITTI 2D object detection dataset and Nuscene. Refer to [KITTI](http://www.c
 python generate_xml.py
 ```
 ## Generate Pseudo-labels
+Replace the original detectron2 with the modified version:
+```
+sudo cp -r ./detectron2 /usr/local/lib/python3.7/dist-packages/detectron2
+```
+```
+python train_net.py --config-file configs/pascal_voc_R_50_C4_24k_moco.yaml \
+ --num-gpus 8 MODEL.WEIGHTS ./output.pkl
+```
