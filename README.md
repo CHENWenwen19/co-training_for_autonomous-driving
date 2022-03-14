@@ -1,2 +1,2 @@
-# co-training_for_automated-driving
-This code is for paper Robust Object Detection for Automated Driving based on Semi-supervised Learning.
+# co-training_for_autonomous-driving
+This code is for paper Robust Object Detection for Autonomous Driving based on Semi-supervised Learning.
