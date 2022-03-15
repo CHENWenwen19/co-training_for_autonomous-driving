@@ -16,6 +16,8 @@ from ..postprocessing import detector_postprocess
 from ..proposal_generator import build_proposal_generator
 from ..roi_heads import build_roi_heads
 from .build import META_ARCH_REGISTRY
+from bbaug import policies
+
 
 __all__ = ["GeneralizedRCNN", "ProposalNetwork"]
 
