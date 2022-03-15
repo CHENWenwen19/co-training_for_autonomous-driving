@@ -32,11 +32,11 @@ python train_net.py --config-file configs/pascal_voc_R_50_C4_24k_moco.yaml \
 ```
 Combine the prediction results of MOCOv1 and MOCOv2:
 ```
-python combine.txt
+python VOC2007/combine.txt
 ```
 Generate labels in xml format:
 ```
-python txt2xml.py
+python VOC2007/txt2xml.py
 ```
 ## Semi-supervised Retraining
 Use labeled KITTI and pseudo-labeled NuScene dataset to implement semi-supervised retraining, use the original detectron2:
