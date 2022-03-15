@@ -2,6 +2,10 @@
 This code is for paper Robust Object Detection for Autonomous Driving based on Semi-supervised Learning.
 ## Install
 Install detectron2. Refer to [detection](https://github.com/facebookresearch/moco/tree/main/detection)
+<br>Install BBAug: <br>
+```
+pip install bbaug
+```
 ## Use MoCo
 ```
 git clone https://github.com/facebookresearch/moco.git
