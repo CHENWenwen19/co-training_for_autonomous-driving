@@ -240,6 +240,24 @@ class GeneralizedRCNN(nn.Module):
         """
         Normalize, pad and batch the input images.
         """
+        '''==============================================================================='''
+        #BBAugmentation
+        #images = [x["image"].to(self.device) for x in batched_inputs]
+        images = []
+        for x in batched_inputs:
+        	img = x["image"].numpy().transpose(1,2,0) 
+        	
+		aug_policy = policies.policies_v3()
+		policy_container = policies.PolicyContainer(aug_policy)
+		random_policy = policy_container.select_random_policy() 
+		img_aug, bbs_aug = policy_container.apply_augmentation(random_policy, img, x.["annotations"]['bndbox'], x.["annotations"]['category_id'])
+		
+		x["annotations"]['bndbox'] = bbs_aug[1:4]
+		x["image"]=img_aug.transpose(2,0,1)
+		images.append(x)
+		
+	images = [torch.from_numpy(x) for x in images]
+        '''==============================================================================='''
         images = [x["image"].to(self.device) for x in batched_inputs]
         images = [(x - self.pixel_mean) / self.pixel_std for x in images]
         images = ImageList.from_tensors(images, self.backbone.size_divisibility)
